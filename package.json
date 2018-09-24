@@ -1,0 +1,8 @@
+{
+	"name": "bq-test",
+	"version": "1.0.0",
+	"dependencies": {
+		"fast-csv": "^2.4.1",
+		"node-fetch": "^2.2.0"
+	}
+}
