@@ -1,5 +1,10 @@
 {
 	"name": "bq-test",
+	"description": "a quick test to read a csv file and write the reversed content into another file",
+	"author": "Rasheed Rahman <radiumraaheed@gmail.com",
+	"scripts": {
+		"start": "node index.js"
+	},
 	"version": "1.0.0",
 	"dependencies": {
 		"fast-csv": "^2.4.1",
