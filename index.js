@@ -2,12 +2,6 @@ const csv = require("fast-csv");
 // const fetch = require("node-fetch");
 const fs = require("fs");
 
-/**
- * Async function to write data to a file
- *
- * @param parameters
- * @return Promise
- */
 function writeFileAsync(parameters) {
 	let {path, data} = parameters;
 	return new Promise(function (resolve, reject) {
@@ -18,13 +12,22 @@ function writeFileAsync(parameters) {
 	});
 }
 
-const main = () => {
+/**
+ * Function to read a csv file and write its reversed content to another csv file
+ *
+ * @param file_path string
+ * @param result_path string
+ *
+ * @return Promise
+ */
+const main = (file_path, result_path = 'reversed.csv') => {
 	return new Promise((resolve, reject) => {
-		csv.fromPath('file.csv')
+		console.time('Completed in');
+		csv.fromPath(file_path)
 				.transform(data => data.reverse())
 				.on('data', response => {
-					writeFileAsync({path: "result.csv", data: response})
-							.then(() => resolve('DONE!'))
+					writeFileAsync({path: result_path, data: response})
+							.then(() => resolve(console.timeEnd('Completed in')))
 							.catch(error => reject(error));
 				})
 				.on('error', error => reject(error))
@@ -47,5 +50,5 @@ const main = () => {
 	});
 };*/
 
-main();
+main('file.csv').catch(error => new Error(error.message || error));
 // checkAbuse('https://radiumrasheed.tech');
